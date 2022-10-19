@@ -45,42 +45,41 @@ const intervall = setInterval(() => {
     }
 }, 1000);
 
+const arrayUser = [];
 
 btn.addEventListener('click',function (){
-    numeriHtml.innerHTML = '';
-    const listaNumeriUtente = numeriInputHtml.value.split(" ");
+
+    if(arrayUser.length < nNumeri ){
+        
+        let inputValue = parseInt(numeriInputHtml.value);
+        arrayUser.push(inputValue);
+        console.log(arrayUser);
+        numeriInputHtml.value = '';
+    }
     
-    let RisposteGiuste = 0;
-    
-    console.log(listaNumeriUtente);
-    for(let i = 0; i < listaNumeriUtente.length; i++){
-        console.log(parseInt(listaNumeriUtente[i]));
-        if(numeri.includes(parseInt(listaNumeriUtente[i]))) {
-            numeriHtml.innerHTML += listaNumeriUtente[i] + ' ';
-            console.log('lista' + listaNumeriUtente[i]);
-            RisposteGiuste ++;
+    let risposteGiuste = 0;
+   
+    for(let i = 0; i < arrayUser.length; i++){
+        console.log(parseInt(arrayUser[i]));
+        if(numeri.includes(parseInt(arrayUser[i]))) {
+            numeriHtml.innerHTML += arrayUser[i] + ' ';
+            console.log('lista' + arrayUser[i]);
+            risposteGiuste ++;
+            console.log(risposteGiuste);
+            risultato.classList.remove('d-none');
+            risultato.innerHTML = 'numeri indovinati: ' + risposteGiuste;
+            numeriInseritiHtml.innerHTML = '';
+            arrayUser.forEach(element => numeriInseritiHtml.innerHTML += `<span class="numeri">${element}</span>`)
+            risultato.classList.remove('bg-danger');
+            risultato.classList.add('bg-success');
+        } else{
+            risultato.classList.remove('d-none');
+            risultato.innerHTML = 'numeri indovinati: ' + risposteGiuste;
+            numeriInseritiHtml.innerHTML = '';
+            arrayUser.forEach(element => numeriInseritiHtml.innerHTML += `<span class="numeri bg-danger">${element}</span>`)
         }
         
     }
-
-    if(RisposteGiuste == 5){
-        numeriInputHtml.value = '';
-        console.log(RisposteGiuste);
-        risultato.classList.remove('d-none');
-        risultato.innerHTML = 'numeri indovinati: ' + RisposteGiuste;
-        numeriInseritiHtml.innerHTML = '';
-        listaNumeriUtente.forEach(element => numeriInseritiHtml.innerHTML += `<span class="numeri">${element}</span>`)
-        risultato.classList.remove('bg-danger');
-        risultato.classList.add('bg-success');
-        risultato.innerHTML = 'Hai indovinato tutti i numeri!!';
-    }else{
-        risultato.classList.remove('d-none');
-        risultato.innerHTML = 'numeri indovinati: ' + RisposteGiuste;
-        numeriInseritiHtml.innerHTML = '';
-        listaNumeriUtente.forEach(element => numeriInseritiHtml.innerHTML += `<span class="numeri bg-danger">${element}</span>`)
-    }
-
-
 
 });
 
