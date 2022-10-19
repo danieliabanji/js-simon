@@ -11,9 +11,23 @@
     <title>Simon Says</title>
 </head>
 <body>
-    <div>
-        <h1 id="numeri"></h1>
-        <input type="number" name="numeriUtente" id="numeriUtente">
+    <header class="d-flex justify-content-around align-items-center p-3">
+        <div class="d-flex align-items-center">
+            <img src="./img/logo.png" alt="Boolean Logo">
+            <h3 class="mx-3">Simon Says</h3>
+        </div>
+        
+    </header>
+    <div class="container d-flex justify-content-center align-items-center mt-5 flex-column">
+        <!-- <button id="random">genera</button> -->
+        <div id="numeri"></div>
+        <div id="chiedi" class="fs-3 text-white"></div>
+        <div class="d-none" id="boxUtente">
+            <input type="text" name="numeriUtente" id="numeriUtente" class="mt-3" >
+            <button id="score" class="btn btn-warning">invia</button>
+        </div>
+        <div id="risultato" class="d-none mt-3 bg-danger text-white p-2"></div>
+        <div id="numeriInseriti" class=" mt-5"></div>
 
     </div>
 
